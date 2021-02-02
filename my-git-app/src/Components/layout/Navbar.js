@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 
 export  const Navbar = ({icon,name}) => {
+
         return (
             <nav className = "navbar bg-primary">
             <h1>
