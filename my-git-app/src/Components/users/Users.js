@@ -17,8 +17,8 @@ const Users = ({users,loading}) => {
               
             </div>
         )
+        
     }
-    
    
 
 } 
