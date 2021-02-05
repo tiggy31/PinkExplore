@@ -1,35 +1,39 @@
-import React, {useState} from 'react'
+import React,{useContext, useState} from 'react'
 import PropTypes from "prop-types";
+import GithubContext from '../../context/github/githubContext'
+import AlertContext from '../../context/alert/alertContext'
+const Search =() => {
 
-export const Search =({searchUsers,showClear,clearUsers,setAlert,showButton})=>  {
+    const githubContext = useContext(GithubContext)
+    const alertContext = useContext(AlertContext)
 
-    const [text, setText] =useState('')
-   
+    const [text, setText] = useState('')
 
-   
-   const onChange =(e) => {
+    const onChange =(e) => {
        setText(e.target.value)
 
     }
     
-   const onSubmit=(e)=>{
+    const onSubmit=(e)=>{
         e.preventDefault()
         if(text === "") {
-            setAlert("Please type something","light")
+              alertContext.setAlert("Please type something","light")
         } else {
-            searchUsers(text)
-            setText('')
+                githubContext.searchUsers(text)
+                setText("")
         }
         
     }
 
+
+       
         return (
             <div>
                 <form onSubmit= {onSubmit}className="form">
                     <input type="text" name="text" placeholder="search users" value ={text} onChange={onChange}/>
                     <input type="submit" value="search" className="btn btn-dark btn-block"/>
                 </form>
-                      {showButton  && <button className="btn btn-light btn-block" onClick={clearUsers}>Clear</button> }
+                      {githubContext.users.length > 0 && <button className="btn btn-light btn-block" onClick={githubContext.clearUsers }>Clear</button> }
                     
                
             </div>
@@ -37,11 +41,8 @@ export const Search =({searchUsers,showClear,clearUsers,setAlert,showButton})=> 
     }
 
 
-Search.propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clearUsers: PropTypes.func.isRequired,
+ Search.propTypes = {
+   
     setAlert: PropTypes.func.isRequired
 }
-
-
 export default Search
