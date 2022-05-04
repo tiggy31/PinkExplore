@@ -1,12 +1,12 @@
 import React, {createContext,useReducer}from 'react'
-import CartReducer from './cartReducer'
+import CartReducer,{sumItems} from './cartReducer'
 
+const cartStorage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')):[]
 
 export const CartContext = createContext()
 const initialState = {
-    cartItems: [],
-    itemCount: 0,
-    total: 0
+    cartItems: cartStorage,
+    ...sumItems(cartStorage)
 }
 
 
@@ -29,11 +29,22 @@ const decrease = (product) => dispatch({
     type: 'DECREASE',
     payload: product
 })
+
+const clear = () => dispatch({
+    type: 'CLEAR'
+})
+const remove = (product) => dispatch({
+    type: 'REMOVE',
+    payload: product
+})
+
 const contextValues = {
     ...state,
     addProduct,
     increase,
-    decrease
+    decrease,
+    remove,
+    clear
 }
 
    return(<CartContext.Provider value={contextValues}>

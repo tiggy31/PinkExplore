@@ -4,7 +4,7 @@ import CartItems from './cartItems'
 import Layout from '../Layout/Layout'
 import Total from './total'
 const CartPage = () => {
-  const {cartItems, itemCount,total,increase,decrease} = useContext(CartContext)
+  const {cartItems, itemCount,total,increase,decrease,remove,clear} = useContext(CartContext)
    return (   
       <Layout>
           <>
@@ -16,11 +16,11 @@ const CartPage = () => {
                      <div className="cart-item-container">
                         {
                             cartItems.map(item => 
-                                <CartItems {...item} key={item.id} increase={increase} decrease={decrease}/>)
+                                <CartItems {...item} key={item.id} increase={increase} decrease={decrease}remove={remove} clear={clear}/>)
                         }
                      </div>
                  </div>
-                 <Total itemCount={itemCount} total={total}/>
+                 <Total itemCount={itemCount} total={total} clear={clear}/>
               </>
           }
           </>

@@ -2,7 +2,7 @@ import React from 'react'
 import { PlusCircleIcon,MinusCircleIcon,TrashIcon } from '../icons'
 import './cartItems.style.scss'
 const CartItems = (product) => {
-    const {title,imageUrl,price,quantity,increase,decrease} = product
+    const {title,imageUrl,price,quantity,increase,decrease,remove} = product
   return(
     <div className="cart-item">
         <div className="item-image">
@@ -26,6 +26,7 @@ const CartItems = (product) => {
               quantity === 1 &&
               <button
                 className="btn-trash"
+                onClick = {() => remove(product)}
                 >
                   <TrashIcon width="20px"/>
               </button>
