@@ -12,7 +12,8 @@ const Shop = () => {
    ))
 
 return (
- <div className="product-list-container">
+    <Layout>
+<div className="product-list-container">
      <h2 className="product-list-title">Shop</h2>
      <div className="product-list"> 
 
@@ -21,6 +22,8 @@ return (
         }
      </div>
  </div>
+    </Layout>
+ 
 )
 }
 

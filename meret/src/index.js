@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import App from './App';
 import ProductContextProvider from './context/product_context';
 import CartContextProvider from './context/cartcontext'
+import UserContextProvider from './context/user-context'
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 
@@ -15,7 +16,9 @@ root.render(
   <ProductContextProvider>
     <CartContextProvider>
       <Elements stripe={stripePromise}>
-    <App />
+        <UserContextProvider>
+        <App />
+        </UserContextProvider>
     </Elements>
     </CartContextProvider>
   </ProductContextProvider>

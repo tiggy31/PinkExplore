@@ -9,6 +9,7 @@
 .app {
   position: relative;
   min-height: 100vh;
+
 }
 
 img {
@@ -23,7 +24,7 @@ img {
 #shop-now {
   font-weight: 600; 
   &:hover {
-    background-color: #606060;
+    background-color: blue;
   }
 }
 
