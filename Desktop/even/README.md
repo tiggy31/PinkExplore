@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 PINKDOT EXPLORER
 
 
@@ -12,5 +11,3 @@ This application consumes the Yelp API,  Google Maps API to find Coffee Shops, r
  -Users can select different catagories and can filter based on rating 
  -The search component features an autocomplete functionality that predicts your search and it allows you to search any where in the world
  -The components are styled using Material UI
-
->>>>>>> 59906b634b62ea842bcb3124e08ee10825b70340

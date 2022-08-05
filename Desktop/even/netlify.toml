@@ -1,4 +1,5 @@
-    [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
+
+[[redirects]]
+  from = "/v3/businesses/search/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
