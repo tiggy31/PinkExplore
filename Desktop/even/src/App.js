@@ -3,7 +3,7 @@ import { CssBaseline, Grid } from '@material-ui/core';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
-import {authorize,getCatgories,searchCatgory} from './api/index'
+import {getCatgories} from './api/index'
 
 
 const App = () => {
@@ -12,7 +12,6 @@ const App = () => {
   const [cat,setCat] = useState([])
   const [rating,setRating] = useState('')
   const [type,setType] = useState('')
-  const [search,setSearch] = useState([])
   const [coordinates,setCoordinates] = useState({})
   const [bounds,setBounds] = useState(null)
   const [childClicked,setChildClicked] = useState('')
@@ -21,10 +20,12 @@ const App = () => {
 
 useEffect(() => {
    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+    setLoading(true)
         setCoordinates({
           lat: latitude,
           lng: longitude
         })
+        setLoading(false)
    })
 },[])
 
@@ -32,16 +33,18 @@ useEffect(() => {
 
   useEffect(() => {
        const filteredPlaces = cat?.businesses?.filter((place) =>Number(place.rating) > rating)
+            setLoading(true)
             setFilteredPlaces(filteredPlaces)
-            
+            setLoading(false)
           
   },[rating])
 
   
 
   useEffect(() => {
+    setLoading(true)
     if(coordinates.lat && coordinates.lng){
-      setLoading(true)
+    
       getCatgories(type,coordinates?.lat,coordinates?.lng)
        .then((data) => {
          console.log(data)
@@ -55,16 +58,6 @@ useEffect(() => {
   },[type,coordinates,rating])
 
 
-
-  // useEffect(() => {
-  //           searchCatgory()
-  //           .then((data) => {
-  //             console.log(data)
-             
-              
-  //           })
-          
-  // },[])
   return (
     <>
       <CssBaseline />
