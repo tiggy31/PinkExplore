@@ -47,7 +47,6 @@ useEffect(() => {
     
       getCatgories(type,coordinates?.lat,coordinates?.lng)
        .then((data) => {
-         console.log(data)
          setCat(data)
          setFilteredPlaces([])
          setLoading(false)
