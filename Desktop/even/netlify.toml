@@ -1,5 +1,9 @@
+[build.environment]
+
+NODE_VERSION = "14.17.0"
+
 
 [[redirects]]
-  from = "/v3/businesses/search/*"
-  to = "/.netlify/functions/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200
